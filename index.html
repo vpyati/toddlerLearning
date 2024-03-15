@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Letter Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        #letter {
+            font-size: 72px; /* Bigger font size */
+            margin: 20px 0; /* More space between the letter and the button */
+        }
+        button {
+            font-size: 24px; /* Bigger font for the button */
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        select {
+            font-size: 20px;
+            padding: 5px 10px;
+        }
+    </style>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -14,7 +40,7 @@
             <option value="uppercase">Uppercase</option>
         </select>
     </div>
-    <div id="letter" style="font-size: 48px; margin-top: 20px;"></div>
+    <div id="letter"></div>
     <button onclick="generateLetter()">Next</button>
 </body>
 </html>
