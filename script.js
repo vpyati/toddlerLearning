@@ -10,7 +10,9 @@ function generateLetter() {
 
     if(caseType === 'uppercase') {
         letterElement.textContent = randomLetter.toUpperCase();
-    } else {
+    } else if(caseType == 'lowercase') {
         letterElement.textContent = randomLetter;
+    } else{
+        letterElement.textContent = Math.floor(Math.random() * 101);
     }
 }
