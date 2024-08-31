@@ -2,6 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     generateLetter(); // Generate the first letter when the page loads
 });
 
+function incrementNumber(element) {
+    // Get the current content of the element
+    let currentValue = element.innerText || element.textContent;
+
+    // Try to parse the content as an integer
+    let number = parseInt(currentValue);
+
+    // Check if the content is a valid number
+    if (isNaN(number)) {
+        // If not a number, initialize to 1
+        return 1;
+    } else {
+        // If it is a number, increment it
+        return number + 1;
+    }
+}
+
+
 function generateLetter() {
     const letterElement = document.getElementById('letter');
     const caseType = document.getElementById('case-select').value;
@@ -13,6 +31,6 @@ function generateLetter() {
     } else if(caseType == 'lowercase') {
         letterElement.textContent = randomLetter;
     } else{
-        letterElement.textContent = Math.floor(Math.random() * 101);
+        letterElement.innerText = incrementNumber();
     }
 }
