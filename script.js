@@ -5,20 +5,8 @@ const sightWords = [
 ];
 
 function incrementNumber(element) {
-    // Get the current content of the element
-    let currentValue = element.innerText || element.textContent;
-
-    // Try to parse the content as an integer
-    let number = parseInt(currentValue);
-
-    // Check if the content is a valid number
-    if (isNaN(number)) {
-        // If not a number, initialize to 1
-        return 1;
-    } else {
-        // If it is a number, increment it
-        return number + 1;
-    }
+    // Generate a random number between 1 and 100
+    return Math.floor(Math.random() * 100) + 1;
 }
 
 function generateLetter() {
