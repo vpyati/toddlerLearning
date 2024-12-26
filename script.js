@@ -4,6 +4,23 @@ const sightWords = [
     "have", "from", "or", "one", "by", "not", "but", "all", "we", "can"
 ];
 
+function incrementNumber(element) {
+    // Get the current content of the element
+    let currentValue = element.innerText || element.textContent;
+
+    // Try to parse the content as an integer
+    let number = parseInt(currentValue);
+
+    // Check if the content is a valid number
+    if (isNaN(number)) {
+        // If not a number, initialize to 1
+        return 1;
+    } else {
+        // If it is a number, increment it
+        return number + 1;
+    }
+}
+
 function generateLetter() {
     const letterElement = document.getElementById('letter');
     const caseType = document.getElementById('case-select').value;
