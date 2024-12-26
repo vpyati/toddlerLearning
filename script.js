@@ -31,6 +31,6 @@ function generateLetter() {
     } else if(caseType == 'lowercase') {
         letterElement.textContent = randomLetter;
     } else{
-        letterElement.innerText = incrementNumber();
+        letterElement.innerText = incrementNumber(letterElement);
     }
 }
