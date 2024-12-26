@@ -38,3 +38,8 @@ function generateLetter() {
         letterElement.innerText = incrementNumber(letterElement);
     }
 }
+
+// Ensure the generateLetter function is called when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    generateLetter(); // Generate the first letter when the page loads
+});
