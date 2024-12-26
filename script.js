@@ -1,24 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    generateLetter(); // Generate the first letter when the page loads
-});
-
-function incrementNumber(element) {
-    // Get the current content of the element
-    let currentValue = element.innerText || element.textContent;
-
-    // Try to parse the content as an integer
-    let number = parseInt(currentValue);
-
-    // Check if the content is a valid number
-    if (isNaN(number)) {
-        // If not a number, initialize to 1
-        return 1;
-    } else {
-        // If it is a number, increment it
-        return number + 1;
-    }
-}
-
+const sightWords = [
+    "the", "and", "is", "to", "in", "it", "you", "that", "he", "was",
+    "for", "on", "are", "as", "with", "his", "they", "at", "be", "this",
+    "have", "from", "or", "one", "by", "not", "but", "all", "we", "can"
+];
 
 function generateLetter() {
     const letterElement = document.getElementById('letter');
@@ -28,9 +12,12 @@ function generateLetter() {
 
     if(caseType === 'uppercase') {
         letterElement.textContent = randomLetter.toUpperCase();
-    } else if(caseType == 'lowercase') {
+    } else if(caseType === 'lowercase') {
         letterElement.textContent = randomLetter;
-    } else{
+    } else if(caseType === 'sightWords') {
+        const randomWord = sightWords[Math.floor(Math.random() * sightWords.length)];
+        letterElement.textContent = randomWord;
+    } else {
         letterElement.innerText = incrementNumber(letterElement);
     }
 }
