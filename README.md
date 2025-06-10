@@ -1,2 +1,2 @@
 # toddlerLearning
-A simple application for toddler learning alphabets
+A simple application for toddler learning the alphabet
