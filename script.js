@@ -33,7 +33,14 @@ function generateLetter() {
     }
 }
 
-// Ensure the generateLetter function is called when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    generateLetter(); // Generate the first letter when the page loads
-});
+// Ensure the generateLetter function is called when the page loads if running in a browser
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        generateLetter(); // Generate the first letter when the page loads
+    });
+}
+
+// Export functions for testing environments like Node.js
+if (typeof module !== 'undefined') {
+    module.exports = { incrementNumber };
+}

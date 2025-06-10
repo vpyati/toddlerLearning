@@ -1,0 +1,13 @@
+{
+  "name": "toddlerlearning",
+  "version": "1.0.0",
+  "description": "A simple application for toddler learning alphabets",
+  "main": "script.js",
+  "scripts": {
+    "test": "node script.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
