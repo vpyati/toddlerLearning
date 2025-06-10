@@ -4,6 +4,17 @@ const sightWords = [
     "have", "from", "or", "one", "by", "not", "but", "all", "we", "can"
 ];
 
+// Simple three and four letter word lists for early reading practice
+const threeLetterWords = [
+    "cat", "dog", "sun", "car", "bus",
+    "hat", "cup", "pig", "bed", "run"
+];
+
+const fourLetterWords = [
+    "tree", "book", "frog", "play", "jump",
+    "rain", "fish", "milk", "time", "ball"
+];
+
 let currentNumber = 0;
 
 function incrementNumber() {
@@ -30,6 +41,12 @@ function generateLetter() {
     } else if(caseType === 'sightWords') {
         const randomWord = sightWords[Math.floor(Math.random() * sightWords.length)];
         letterElement.textContent = randomWord;
+    } else if(caseType === 'threeLetterWords') {
+        const randomWord = threeLetterWords[Math.floor(Math.random() * threeLetterWords.length)];
+        letterElement.textContent = randomWord;
+    } else if(caseType === 'fourLetterWords') {
+        const randomWord = fourLetterWords[Math.floor(Math.random() * fourLetterWords.length)];
+        letterElement.textContent = randomWord;
     }
 }
 
@@ -42,5 +59,9 @@ if (typeof document !== 'undefined') {
 
 // Export functions for testing environments like Node.js
 if (typeof module !== 'undefined') {
-    module.exports = { incrementNumber };
+    module.exports = {
+        incrementNumber,
+        threeLetterWords,
+        fourLetterWords
+    };
 }
