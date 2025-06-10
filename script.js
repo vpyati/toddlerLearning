@@ -4,9 +4,15 @@ const sightWords = [
     "have", "from", "or", "one", "by", "not", "but", "all", "we", "can"
 ];
 
-function incrementNumber(element) {
-    // Generate a random number between 1 and 100
-    return Math.floor(Math.random() * 100) + 1;
+let currentNumber = 0;
+
+function incrementNumber() {
+    // Increment number from 1 to 100 then wrap back to 1
+    currentNumber += 1;
+    if (currentNumber > 100) {
+        currentNumber = 1;
+    }
+    return currentNumber;
 }
 
 function generateLetter() {
@@ -23,7 +29,7 @@ function generateLetter() {
         const randomWord = sightWords[Math.floor(Math.random() * sightWords.length)];
         letterElement.textContent = randomWord;
     } else {
-        letterElement.innerText = incrementNumber(letterElement);
+        letterElement.innerText = incrementNumber();
     }
 }
 
