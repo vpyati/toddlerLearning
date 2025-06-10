@@ -25,11 +25,11 @@ function generateLetter() {
         letterElement.textContent = randomLetter.toUpperCase();
     } else if(caseType === 'lowercase') {
         letterElement.textContent = randomLetter;
+    } else if(caseType === 'numbers') {
+        letterElement.textContent = incrementNumber();
     } else if(caseType === 'sightWords') {
         const randomWord = sightWords[Math.floor(Math.random() * sightWords.length)];
         letterElement.textContent = randomWord;
-    } else {
-        letterElement.innerText = incrementNumber();
     }
 }
 
