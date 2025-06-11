@@ -11,5 +11,5 @@ Open `index.html` in a modern web browser. Use the dropdown to choose the catego
 - **3-letter words** – simple words like `cat`, `dog`, etc.
 - **4-letter words** – slightly longer words like `tree` or `book`
 
-Click **Next** to show a new entry each time.
+Click **Next** or press the **Right Arrow** key to show a new entry each time.
 

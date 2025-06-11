@@ -54,6 +54,11 @@ function generateLetter() {
 if (typeof document !== 'undefined') {
     document.addEventListener('DOMContentLoaded', () => {
         generateLetter(); // Generate the first letter when the page loads
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                generateLetter();
+            }
+        });
     });
 }
 
