@@ -13,3 +13,5 @@ Open `index.html` in a modern web browser. Use the dropdown to choose the catego
 
 Click **Next** or press the **Right Arrow** key to show a new entry each time.
 
+The layout uses responsive styles so it works well on both desktop and mobile screens.
+

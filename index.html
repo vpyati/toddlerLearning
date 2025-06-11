@@ -16,8 +16,10 @@
             text-align: center;
         }
         #letter {
-            font-size: 300px; /* Bigger font size */
-            margin: 30px 0; /* More space between the letter and the button */
+            font-size: clamp(60px, 20vw, 300px); /* Scale with screen size */
+            margin: 5vh 0; /* Responsive vertical spacing */
+            max-width: 90%;
+            word-break: break-word;
         }
         button {
             font-size: 24px; /* Bigger font for the button */
