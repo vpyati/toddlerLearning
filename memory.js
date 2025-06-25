@@ -14,13 +14,23 @@ let lockBoard = false;
 function setupBoard() {
     const board = document.getElementById('board');
     const shuffled = shuffle(shapes.slice());
+    lockBoard = true;
     shuffled.forEach(shape => {
         const cell = document.createElement('div');
         cell.className = 'cell';
         cell.dataset.shape = shape;
+        cell.textContent = shape; // reveal initially
         cell.addEventListener('click', handleClick);
         board.appendChild(cell);
     });
+
+    // hide shapes after 2 seconds so the player can memorize them
+    setTimeout(() => {
+        document.querySelectorAll('.cell').forEach(c => {
+            c.textContent = '';
+        });
+        lockBoard = false;
+    }, 2000);
 }
 
 function handleClick(event) {
