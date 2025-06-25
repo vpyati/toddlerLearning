@@ -15,3 +15,11 @@ Click **Next** or press the **Right Arrow** key to show a new entry each time.
 
 The layout uses responsive styles so it works well on both desktop and mobile screens.
 
+## Memory Match Game
+
+The repository also includes a simple matching game. Open `memory.html` in a browser to play.
+
+- A 2 x 3 grid of hidden shapes is presented.
+- Click on two cells to reveal their shapes.
+- If the shapes match they disappear; otherwise they are hidden again after a short delay.
+
