@@ -22,5 +22,5 @@ The repository also includes a simple matching game. Open `memory.html` in a bro
 - A 2 x 3 grid of hidden shapes is presented.
 - Click on two cells to reveal their shapes.
 - If the shapes match they disappear; otherwise they are hidden again after a short delay.
-- When all matches are found, a star appears and a short celebratory sound plays for about five seconds.
+- When all matches are found, a star rating appears (5 stars for a perfect game and at least one star otherwise) and a short celebratory melody plays for about five seconds.
 
