@@ -10,11 +10,35 @@ function shuffle(array) {
 
 let firstCell = null;
 let lockBoard = false;
+let matchedCount = 0;
+
+function playWinSound() {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = ctx.createOscillator();
+    oscillator.type = 'triangle';
+    oscillator.frequency.setValueAtTime(440, ctx.currentTime);
+    oscillator.connect(ctx.destination);
+    oscillator.start();
+    setTimeout(() => oscillator.stop(), 300);
+}
+
+function celebrate() {
+    const star = document.getElementById('star');
+    if (star) {
+        star.style.display = 'block';
+    }
+    playWinSound();
+}
 
 function setupBoard() {
     const board = document.getElementById('board');
     const shuffled = shuffle(shapes.slice());
     lockBoard = true;
+    matchedCount = 0;
+    const star = document.getElementById('star');
+    if (star) {
+        star.style.display = 'none';
+    }
     shuffled.forEach(shape => {
         const cell = document.createElement('div');
         cell.className = 'cell';
@@ -48,6 +72,10 @@ function handleClick(event) {
             firstCell.textContent = '';
             cell.textContent = '';
             firstCell = null;
+            matchedCount += 2;
+            if (matchedCount === shapes.length) {
+                celebrate();
+            }
         } else {
             lockBoard = true;
             setTimeout(() => {
