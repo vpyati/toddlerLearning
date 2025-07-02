@@ -15,11 +15,15 @@ let matchedCount = 0;
 function playWinSound() {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
     oscillator.type = 'triangle';
     oscillator.frequency.setValueAtTime(440, ctx.currentTime);
-    oscillator.connect(ctx.destination);
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
     oscillator.start();
-    setTimeout(() => oscillator.stop(), 300);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 5);
+    oscillator.stop(ctx.currentTime + 5);
 }
 
 function celebrate() {
