@@ -39,7 +39,20 @@ function playCelebrationSound() {
     }
 
     const context = new AudioContextClass();
-    const melody = [523.25, 659.25, 783.99, 987.77];
+    const melody = [
+        523.25, // C5
+        783.99, // G5
+        1046.5, // C6
+        987.77, // B5
+        1046.5, // C6
+        1318.51, // E6
+        1046.5, // C6
+        1567.98, // G6
+        2093.0, // C7
+        1975.53, // B6
+        2093.0, // C7
+        2637.02 // E7
+    ];
     let startAt = context.currentTime;
 
     melody.forEach((freq) => {
