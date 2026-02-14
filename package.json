@@ -4,7 +4,7 @@
   "description": "A simple application for toddler learning alphabets",
   "main": "script.js",
   "scripts": {
-    "test": "node script.test.js && node addition.test.js"
+    "test": "node script.test.js && node addition.test.js && node time.test.js"
   },
   "keywords": [],
   "author": "",
