@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Flash Card Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            color-scheme: light;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+            background: linear-gradient(135deg, #fffaf2, #f2f7ff);
+            color: #15314b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .game {
+            width: min(760px, 100%);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 12px 36px rgba(37, 85, 135, 0.16);
+            padding: 24px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(28px, 5vw, 42px);
+        }
+
+        .subtitle {
+            margin: 0 0 22px;
+            font-size: clamp(16px, 2.8vw, 21px);
+        }
+
+        .status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .stars {
+            color: #f7b500;
+            letter-spacing: 2px;
+            min-height: 1.3em;
+        }
+
+        .mode-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .mode-row label {
+            font-size: 18px;
+        }
+
+        .mode-row select {
+            font-size: 18px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #9cb8d8;
+        }
+
+        .flashcard {
+            width: 100%;
+            min-height: 250px;
+            border-radius: 14px;
+            border: 3px dashed #76aee9;
+            background: #f2f8ff;
+            color: #0b3e6b;
+            font-size: clamp(28px, 5.3vw, 48px);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-bottom: 18px;
+        }
+
+        .flashcard:active {
+            transform: scale(0.99);
+        }
+
+        .front-note {
+            display: block;
+            margin-top: 14px;
+            font-size: 18px;
+            color: #26547c;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        button.action {
+            font-size: 20px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .right {
+            background: #3dae64;
+            color: #fff;
+        }
+
+        .wrong {
+            background: #ea5f5f;
+            color: #fff;
+        }
+
+        .next-round {
+            margin-top: 6px;
+            background: #2e74bb;
+            color: #fff;
+        }
+
+        .message {
+            min-height: 28px;
+            font-size: 20px;
+            margin: 8px 0 0;
+        }
+
+        .hint {
+            font-size: 16px;
+            color: #355978;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="time.js" defer></script>
+</head>
+<body>
+    <main class="game">
+        <h1>Time Flash Card Challenge</h1>
+        <p class="subtitle">Practice tiny time jumps and time remaining questions.</p>
+
+        <section class="status">
+            <div id="progress">Question 1 / 5</div>
+            <div id="star-display" class="stars" aria-live="polite"></div>
+        </section>
+
+        <div class="mode-row">
+            <label for="mode-select">Choose mode:</label>
+            <select id="mode-select">
+                <option value="remaining">Time remaining</option>
+                <option value="after">What time after a few minutes?</option>
+                <option value="mixed">Mixed mode</option>
+            </select>
+        </div>
+
+        <button id="flashcard" class="flashcard" aria-label="Show answer">
+            <span id="card-text"></span>
+            <span class="front-note">Click to reveal answer</span>
+        </button>
+
+        <div class="actions">
+            <button id="correct-btn" class="action right" disabled>I got it right ✅</button>
+            <button id="wrong-btn" class="action wrong" disabled>I need practice ❌</button>
+        </div>
+
+        <button id="new-game-btn" class="action next-round" hidden>Play another 5-question game</button>
+
+        <p class="message" id="message" aria-live="polite"></p>
+        <p class="hint">Time remaining uses end times on 5-minute marks. Time-after mode adds 1 to 4 minutes.</p>
+    </main>
+</body>
+</html>

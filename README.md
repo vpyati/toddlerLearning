@@ -35,3 +35,12 @@ Open `addition.html` in a browser for a math practice game focused on **+3** fac
 - The child says the answer out loud, clicks the card to flip, and then marks whether they got it right.
 - A 0 to 5 star score appears at the end of each 5-question round.
 - If the score is 4 or 5 stars, a celebratory sound plays.
+
+## Time Flash Card Game
+
+Open `time.html` in a browser for a clock-themed math game with two practice modes.
+
+- **Time remaining** – asks how many minutes until a target time, with target times on 5-minute marks.
+- **What time after a few minutes?** – asks the time after adding 1 to 4 minutes.
+- **Mixed mode** – alternates between both styles.
+- Each round has 5 questions with flip-to-reveal answers and a star score at the end.
