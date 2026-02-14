@@ -70,6 +70,53 @@ function starString(score, maxStars = 5) {
     return '★'.repeat(score) + '☆'.repeat(maxStars - score);
 }
 
+function shouldCelebrate(score, threshold = 4) {
+    return score >= threshold;
+}
+
+function playCelebrationSound() {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) {
+        return;
+    }
+
+    const context = new AudioContextClass();
+    const melody = [
+        523.25, // C5
+        783.99, // G5
+        1046.5, // C6
+        987.77, // B5
+        1046.5, // C6
+        1318.51, // E6
+        1046.5, // C6
+        1567.98, // G6
+        2093.0, // C7
+        1975.53, // B6
+        2093.0, // C7
+        2637.02 // E7
+    ];
+    let startAt = context.currentTime;
+
+    melody.forEach((freq) => {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(freq, startAt);
+        gain.gain.setValueAtTime(0.0001, startAt);
+        gain.gain.exponentialRampToValueAtTime(0.3, startAt + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.28);
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        oscillator.start(startAt);
+        oscillator.stop(startAt + 0.3);
+        startAt += 0.18;
+    });
+}
+
 if (typeof document !== 'undefined') {
     const roundSize = 5;
     let questionIndex = 0;
@@ -106,9 +153,13 @@ if (typeof document !== 'undefined') {
         cardText.textContent = `Round complete! Score: ${score} / ${roundSize}`;
         progress.textContent = 'Great work! Round complete.';
         starDisplay.textContent = starString(score, roundSize);
-        message.textContent = score >= 4
+        message.textContent = shouldCelebrate(score)
             ? 'Excellent time skills! 🎉'
             : 'Nice effort! Try another round for more stars.';
+
+        if (shouldCelebrate(score)) {
+            playCelebrationSound();
+        }
 
         setButtonsEnabled(false);
         newGameBtn.hidden = false;
@@ -168,6 +219,7 @@ if (typeof module !== 'undefined') {
         buildTimeRemainingQuestion,
         buildAfterMinutesQuestion,
         buildQuestion,
-        starString
+        starString,
+        shouldCelebrate
     };
 }

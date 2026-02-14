@@ -6,7 +6,8 @@ const {
     buildTimeRemainingQuestion,
     buildAfterMinutesQuestion,
     buildQuestion,
-    starString
+    starString,
+    shouldCelebrate
 } = require('./time');
 
 assert.strictEqual(toTotalMinutes(9, 30), 570, '9:30 should convert to 570');
@@ -49,5 +50,8 @@ const mixedQuestion = buildQuestion('mixed', mixedRng);
 assert.strictEqual(mixedQuestion.mode, 'remaining', 'Mixed mode should pick remaining when rng < 0.5');
 
 assert.strictEqual(starString(4, 5), '★★★★☆', 'Star string should render score correctly');
+assert.strictEqual(shouldCelebrate(4), true, 'Score of 4 should celebrate');
+assert.strictEqual(shouldCelebrate(5), true, 'Score of 5 should celebrate');
+assert.strictEqual(shouldCelebrate(3), false, 'Score below 4 should not celebrate');
 
 console.log('time.test.js passed');
