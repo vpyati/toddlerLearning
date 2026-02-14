@@ -27,8 +27,9 @@ assert.strictEqual(remainingQuestion.mode, 'remaining', 'Remaining question mode
 assert.ok(/How much time until/.test(remainingQuestion.prompt), 'Remaining prompt should ask time until');
 assert.ok(/minutes$/.test(remainingQuestion.answer), 'Remaining answer should be in minutes');
 assert.strictEqual(Number.parseInt(remainingQuestion.answer, 10) % 5, 0, 'Remaining answer should be a multiple of 5');
+assert.ok(Number.parseInt(remainingQuestion.answer, 10) < 15, 'Remaining answer should stay below 15 minutes');
 
-const afterRngValues = [0.66, 0.5, 0.5];
+const afterRngValues = [0.66, 0.5];
 let afterPointer = 0;
 const afterRng = () => {
     const value = afterRngValues[afterPointer % afterRngValues.length];
@@ -37,7 +38,8 @@ const afterRng = () => {
 };
 const afterQuestion = buildAfterMinutesQuestion(afterRng);
 assert.strictEqual(afterQuestion.mode, 'after', 'After question mode should be after');
-assert.ok(/What time will it be after/.test(afterQuestion.prompt), 'After prompt should ask future time');
+assert.ok(/What time will it be after 3 minutes\?/.test(afterQuestion.prompt), 'After prompt should use a static 3-minute increment');
+assert.ok(/It is \d{1,2}:(0[1-9]|1\d|20)\./.test(afterQuestion.prompt), 'After prompt should keep start minutes between 1 and 20');
 
 const mixedRngValues = [0.1, 0.66, 0.5, 0.2];
 let mixedPointer = 0;
