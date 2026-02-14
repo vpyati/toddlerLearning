@@ -22,7 +22,7 @@ function buildTimeRemainingQuestion(rng = Math.random) {
     const startHour = Math.floor(rng() * 12) + 1;
     const startMinute = pickRandom([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50], rng);
     const possibleDiffs = [];
-    for (let diff = 5; diff <= 30; diff += 5) {
+    for (let diff = 5; diff < 15; diff += 5) {
         if (startMinute + diff <= 55) {
             possibleDiffs.push(diff);
         }
@@ -40,8 +40,8 @@ function buildTimeRemainingQuestion(rng = Math.random) {
 
 function buildAfterMinutesQuestion(rng = Math.random) {
     const startHour = Math.floor(rng() * 12) + 1;
-    const startMinute = Math.floor(rng() * 60);
-    const increment = Math.floor(rng() * 4) + 1;
+    const startMinute = Math.floor(rng() * 20) + 1;
+    const increment = 3;
 
     const end = fromTotalMinutes(toTotalMinutes(startHour, startMinute) + increment);
 
